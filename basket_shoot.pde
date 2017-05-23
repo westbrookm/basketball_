@@ -31,9 +31,9 @@ void draw()
   text(typing, indent, 90);  
   text(saved, indent, 130);
   
+                                   
  
- 
-  if (currentTime<0)
+    if (currentTime<0)
   {
     text("GAME OVER", width/2, height/2);
     noLoop();
