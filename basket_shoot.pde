@@ -8,11 +8,15 @@ int score=0;
 int maxTime = 60;
 int currentTime;
 int currentScore;
+int time = 0;
+int action;
 void setup() 
 {
   fullScreen();
-  f = createFont("Arial", 16);
-  font = createFont("Arial", 100);
+  f = createFont("Arial", 120);
+  font = createFont("Arial", 120);
+  f = createFont("Arial" , 120);
+  font = createFont("Arial" , 120);
   background(255);
   fill(0);
   currentTime = maxTime;
@@ -24,26 +28,28 @@ void draw()
   int indent = 25; 
   timeText = "" + currentTime;
   currentTime=maxTime-int(millis()/1000);
-  text(timeText, width/2, 50);
+  text(timeText, 1100, 90);
   textFont(f);  
-  fill(0);  
-  text("Click in this sketch and type. \nHit return to save what you typed.", indent, 40);  
-  text(typing, indent, 90);  
-  text(saved, indent, 130);
-  
-                                   
- 
-    if (currentTime<0)
+  fill(0);
+
+  text("Score: " + score, indent, 90);
+
+  if (currentTime<0)
   {
-    text("GAME OVER", width/2, height/2);
+    text("GAME OVER", 300, height/2);
     noLoop();
   }
+       
+  println(time + ", " + millis());
+  
+  if(millis() - 4000 > time) time = millis();                      
 }
 
 void keyPressed()
 {
-  if (key == ' ') 
+  if (key == ' ' && time < millis()) 
   {    
-   score=score+2;
+      time +=   4000;
+      score=score+2;   
   }
 }
